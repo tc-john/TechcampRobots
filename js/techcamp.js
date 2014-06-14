@@ -117,11 +117,25 @@
     }
     
     Robot.prototype.turnRight = function(callback) {
-        this.turn(1, callback);
+        
+        if (arguments.length == 2) {
+            // Ok I have been called from the takeSteps method
+            this.turn(1, arguments[1]);
+        }
+        else {
+            this.turn(1, callback);
+        }
+        
     }
     
     Robot.prototype.turnLeft = function(callback) {
-        this.turn(-1, callback);
+        if (arguments.length == 2) {
+            // Ok I have been called from the takeSteps method
+            this.turn(-1, arguments[1]);
+        }
+        else {
+            this.turn(-1, callback);
+        }
     }
     
     Robot.prototype.eat = function(item, callback) {
@@ -130,6 +144,33 @@
         }
         else {
             this.alpha -= 0.1;
+        }
+    }
+    
+    Robot.prototype.takeSteps = function(steps, callback) {
+        var numSteps = steps.length;
+        var currentStep = 0;
+        var theRobot = this;
+        
+        console.log("Taking steps");
+        
+        function runSteps() {
+            steps[currentStep].call(theRobot, 1, onComplete);
+            
+            function onComplete(){
+                currentStep++;
+
+                if (currentStep < numSteps) {
+                    runSteps()
+                }
+            
+        	}
+    	}
+        
+        runSteps();  
+        
+        if (typeof callback !== 'undefined') {
+            callback();
         }
     }
     
