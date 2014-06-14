@@ -9,7 +9,6 @@
     <script>
         //Code goes here
         var stage;
-        var circle;
         
         function init() {
             stage = new createjs.Stage("theCanvas");
@@ -22,7 +21,11 @@
 		}
         
         function go() {
+            var robot = new Robot();
+			
+			stage.addChild(robot);
             
+            createjs.Ticker.addEventListener("tick", stage);
         }
         
     </script>
