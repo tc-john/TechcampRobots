@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Robots</title>
+    <link rel="stylesheet" type="text/css" href="styles/robots.css">
+    <script type="text/javascript" src="https://code.createjs.com/createjs-2013.12.12.min.js"></script>
+    <script type="text/javascript" src="js/techcamp.js"></script>
+    
+    <script>
+        //Code goes here
+        var stage;
+        var circle;
+        
+        function init() {
+            stage = new createjs.Stage("theCanvas");
+            setUpBoard();
+        }
+        
+        function setUpBoard() {
+            stage.removeAllChildren();
+            
+		}
+        
+        function go() {
+            
+        }
+        
+    </script>
+</head>
+
+<body onload="init()">
+    <canvas id="theCanvas" width="800" height="600"></canvas>
+    <div id="menu">
+        <button type="button" onclick="go()">
+            Go
+        </button>
+        
+         <button type="button" onclick="setUpBoard()">
+            Reset
+        </button>
+    </div>
+    
+</body>
+
+</html>
