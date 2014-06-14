@@ -12,6 +12,7 @@
         
         function init() {
             stage = new createjs.Stage("theCanvas");
+			createjs.Ticker.addEventListener("tick", stage);
             setUpBoard();
         }
         
@@ -23,9 +24,8 @@
         function go() {
             var robot = new Robot();
 			
+			
 			stage.addChild(robot);
-            
-            createjs.Ticker.addEventListener("tick", stage);
         }
         
     </script>
